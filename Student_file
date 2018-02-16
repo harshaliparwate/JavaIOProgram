@@ -1,0 +1,157 @@
+Write a Program to accept 10 Student Details Like..
+
+1. StudentID - String - StudentID must start with S and followed by 3 digit.
+2. StudentName - String
+3. StudentAge  - int - Value entered by user must not be greater than 100
+4. StudentCity - String - 
+5. StudentCountry - String - Only India is allowed
+
+
+Code for writing in file:
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaexampls.FileIOExample;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
+/**
+ *
+ * @author Harshali
+ */
+public class StudentFile {
+    public static void main(String [] arg) throws IOException
+    {
+        //in this example we read that bytedata mesge in that datafile path given 
+        //String datafile ="D:\\harshu\\hpp.txt";
+        
+        String StdName,StdCountry,Stdcity;
+        int stdAge,StdID;
+        Scanner sc=new Scanner(System.in);
+        File StudentDetails = new File("D:\\harshu\\StudentFile.txt");
+         PrintWriter pw = new PrintWriter(new FileWriter(StudentDetails, true));
+       
+         //pw.print("S_id"+"\t"+"name"+"\t"+"Age"+"\t"+"city"+"\t"+"country");
+
+          for (int i = 0; i <50; i++) {
+       
+        try {
+            
+            System.out.println("Enter Student Id in starting S and following threee digit number: ");
+            pw.println();
+            StdID=sc.nextInt();
+             pw.print(StdID+"\t");
+            
+            System.out.println("Enter name: ");
+            StdName = sc.next();
+            pw.print(StdName+"\t");
+
+          System.out.println("Enter age: ");
+             stdAge = sc.nextInt();
+             pw.print( stdAge+"\t");
+         
+             System.out.println("Enter city: ");
+             Stdcity = sc.next();
+             pw.print( Stdcity+"\t");
+         
+             System.out.println("Enter country: ");
+             StdCountry= sc.next();
+             pw.print( StdCountry+"\t");
+             
+             pw.println();
+                }
+           catch(Exception e)
+           {
+               
+        }
+           System.out.println(); 
+        
+    }
+   
+
+    pw.close();
+    sc.close();
+   
+}
+
+}
+         
+         
+Code For redaing and answer of questions:
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaexampls.FileIOExample;
+
+/**
+ *
+ * @author Harshali
+ */
+import java.io.BufferedReader; 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class CountAge
+{
+    public static void main(String args[]) throws FileNotFoundException
+    { 
+        CountAge s=new CountAge();
+       // s.start(); 
+        FileReader fr=new FileReader("D:\\harshu\\StudentFile.txt");
+        
+        Scanner sc =new Scanner(fr);
+            
+            String the_line=null;
+            String [] arr= new String[100];
+            
+            int count=0;
+            String nm="A";
+            while(sc.hasNext())
+            {
+                String id=sc.next();
+                String name=sc.next();
+                int age=Integer.parseInt(sc.next());
+                 String city=sc.next();
+                  String country=sc.next();
+                
+                  if(name.startsWith(nm))
+                  {
+                      System.out.print(id+"\t");
+                      System.out.print(name+"\t");
+                      System.out.print(age+"\t");
+                      System.out.print(city+"\t");
+                      System.out.print(country+"\t");
+                  }
+                  
+                the_line=sc.nextLine();
+                System.out.println(the_line);
+                
+             //  int [] c=sc.next();
+                
+                if(age>21)
+                {
+                    count++;
+                }
+                
+                
+                
+                
+              // System.out.println(d);
+                
+                
+            }
+            System.out.println( "total number of Studetn whose age greater than 21 is:"+count);
+             sc.close();
+    }
+    
+   
+    }
+

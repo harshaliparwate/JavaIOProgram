@@ -1,0 +1,236 @@
+Qu 2 :-
+Write a Java program to accept movie details like..
+
+1. MovieID
+2. MovieName
+3. MovieDirector
+4. MovieActor
+5. MovieRating
+6. MovieType
+7. MovieReleaseDate
+
+
+
+Code for writing file 50 recordes
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaexampls.FileIOExample;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Harshali
+ */
+
+    
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
+/**
+ *
+ * @author Harshali
+ */
+public class Movie_file {
+    public static void main(String [] arg) throws IOException
+    {
+        //in this example we read that bytedata mesge in that datafile path given 
+        //String datafile ="D:\\harshu\\hpp.txt";
+        
+        String M_Name,M_actor,m_dt,M_director,Mtype;
+        int M_rating,M_ID;
+        Scanner sc=new Scanner(System.in);
+        File StudentDetails = new File("D:\\harshu\\MovieFile.txt");
+         PrintWriter pw = new PrintWriter(new FileWriter(StudentDetails, true));
+       
+         //pw.print("S_id"+"\t"+"name"+"\t"+"Age"+"\t"+"city"+"\t"+"country");
+
+          for (int i = 0; i <2; i++) {
+       
+        try {
+            
+            System.out.println("Enter movie Id in starting S and following threee digit number: ");
+            pw.println();
+            M_ID=sc.nextInt();
+             pw.print(M_ID+"\t");
+            
+            System.out.println("Enter name: ");
+            M_Name = sc.next();
+            pw.print(M_Name+"\t");
+
+          System.out.println("Enter Director name: ");
+             M_director = sc.next();
+             pw.print( M_director+"\t");
+         
+             System.out.println("Enter Actor NAme: ");
+             M_actor = sc.next();
+             pw.print( M_actor+"\t");
+         
+             System.out.println("Enter Rating: ");
+             M_rating= sc.nextInt();
+             pw.print( M_rating+"\t");
+             
+             System.out.println("Enter TYpe: ");
+             Mtype= sc.next();
+             pw.print( Mtype+"\t");
+             
+             System.out.println("Enter Realese date: ");
+             m_dt= sc.next();
+             pw.print( m_dt+"\t");
+             
+             pw.println();
+                }
+           catch(Exception e)
+           {
+               
+        }
+           System.out.println(); 
+        
+    }
+   
+
+    pw.close();
+    sc.close();
+    
+   
+    
+}
+
+}
+    
+    Code for questions :
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaexampls.FileIOExample;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Harshali
+ */
+
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/**
+ *
+ * @author Harshali
+ */
+
+public class movie_answes {
+    public static void main(String args[]) throws FileNotFoundException
+    { 
+        CountAge s=new CountAge();
+       // s.start(); 
+        FileReader fr=new FileReader("D:\\harshu\\MovieFile.txt");
+        
+        Scanner sc =new Scanner(fr);
+            
+            String the_line=null;
+            String [] arr= new String[100];
+            
+            int count=0;
+            String nm="A";
+            while(sc.hasNext())
+            {   
+                the_line=sc.nextLine();
+                System.out.println(the_line);
+                
+                int id=sc.nextInt();
+                String mname=sc.next();
+                String dir=sc.next();
+                String actor=sc.next();
+                int rating=sc.nextInt();
+                String type=sc.next();
+                String dt=sc.next();
+
+                if(type.endsWith("U"))
+                {
+                    System.out.print(id+"\t");
+                      System.out.print(mname+"\t");
+                      System.out.print(dir+"\t");
+                      System.out.print(actor+"\t");
+                      System.out.print(rating+"\t");
+                      System.out.print(type+"\t");
+                      System.out.print(dt+"\t");
+              }
+               
+                if (rating>=4)
+                {
+                    System.out.println();
+                    System.out.println("rating with 4 star");
+                     System.out.print(id+"\t");
+                      System.out.print(mname+"\t");
+                      System.out.print(dir+"\t");
+                      System.out.print(actor+"\t");
+                      System.out.print(rating+"\t");
+                      System.out.print(type+"\t");
+                       System.out.print(dt+"\t");
+                      System.out.println();
+                      
+                
+                }
+                
+                if(actor.startsWith("khan"))
+                {
+                     System.out.println("khan star");
+                     System.out.print(id+"\t");
+                      System.out.print(mname+"\t");
+                      System.out.print(dir+"\t");
+                      System.out.print(actor+"\t");
+                      System.out.print(rating+"\t");
+                      System.out.print(type+"\t");
+                       System.out.print(dt+"\t");
+                      System.out.println();
+                }
+                
+                String [] str=dt.split("/");
+                if(str[2].matches("2105"))
+                {
+                     System.out.print(id+"\t");
+                      System.out.print(mname+"\t");
+                      System.out.print(dir+"\t");
+                      System.out.print(actor+"\t");
+                      System.out.print(rating+"\t");
+                      System.out.print(type+"\t");
+                       System.out.print(dt+"\t");
+                      System.out.println();
+                }
+                        
+                
+                System.out.println();
+            }
+             
+                
+            }
+      
+            
+    }
+    
+   

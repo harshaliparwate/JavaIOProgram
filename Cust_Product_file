@@ -1,0 +1,263 @@
+Qu 3 :-
+Write a Java program to accept Transaction details like..
+
+1. CustomerID
+2. ProductID
+3. ProductPrice
+4. Quantity
+5. TotalPrice
+6. DateOfPurchase
+7. productType
+8. DiscountPercentage
+
+
+1. Accept 50 details and store the data inside the file using proper delimeter.
+
+2. Read the data from file and perform below analysis.
+
+Customer did highest purchase in a day
+Total Purchase made by customer in one year.
+Display the details of all the products where discount is >25%
+
+
+
+Code for write 50 records in file:
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaexampls.FileIOExample;
+
+
+/**
+ *
+ * @author Harshali
+ */
+
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Harshali
+ */
+
+    
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
+/**
+ *
+ * @author Harshali
+ */
+public class Cust_file {
+    public static void main(String [] arg) throws IOException
+    {
+        //in this example we read that bytedata mesge in that datafile path given 
+        //String datafile ="D:\\harshu\\hpp.txt";
+        
+        String p_type,Date_Of_perchase,C_id;
+        int P_ID,Price,quantity,total_p,Dis_per;
+        Scanner sc=new Scanner(System.in);
+        File StudentDetails = new File("D:\\harshu\\CustFile.txt");
+         PrintWriter pw = new PrintWriter(new FileWriter(StudentDetails, true));
+       
+         //pw.print("S_id"+"\t"+"name"+"\t"+"Age"+"\t"+"city"+"\t"+"country");
+
+          for (int i = 0; i <2; i++) {
+       
+        try {
+            
+            System.out.println("Enter Cust Id in starting S and following threee digit number: ");
+            pw.println();
+            
+            C_id=sc.next();
+             pw.print(C_id+"\t");
+             System.out.println("Enter product Id in starting S and following threee digit number: ");
+            P_ID=sc.nextInt();
+             pw.print(P_ID+"\t");
+             
+            System.out.println("Enter Product Price: ");
+            Price = sc.nextInt();
+            pw.print(Price+"\t");
+
+          System.out.println("Enter quantity: ");
+             quantity = sc.nextInt();
+             pw.print( quantity+"\t");
+         
+             System.out.println("Enter Total Price: ");
+             total_p = sc.nextInt();
+             pw.print( total_p+"\t");
+         
+             System.out.println("Enter DAte of parchase: ");
+             Date_Of_perchase= sc.next();
+             pw.print( Date_Of_perchase+"\t");
+             
+             System.out.println("Enter  product TYpe: ");
+             p_type= sc.next();
+             pw.print( p_type+"\t");
+             
+             System.out.println("Enter Discount percentage: ");
+             Dis_per= sc.nextInt();
+             pw.print( Dis_per+"\t");
+             
+             pw.println();
+                }
+           catch(Exception e)
+           {
+               
+        }
+           System.out.println(); 
+        
+    }
+   
+
+    pw.close();
+    sc.close();
+    
+   // split in sptitokanizer  in value[] then 
+
+    
+}
+
+}
+
+_code for querrys:
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaexampls.FileIOExample;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Harshali
+ */
+
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/**
+ *
+ * @author Harshali
+ */
+
+public class movie_answes {
+    public static void main(String args[]) throws FileNotFoundException
+    { 
+        CountAge s=new CountAge();
+       // s.start(); 
+        FileReader fr=new FileReader("D:\\harshu\\MovieFile.txt");
+        
+        Scanner sc =new Scanner(fr);
+            
+            String the_line=null;
+            String [] arr= new String[100];
+            
+            int count=0;
+            String nm="A";
+            while(sc.hasNext())
+            {   
+                the_line=sc.nextLine();
+                System.out.println(the_line);
+                
+                int id=sc.nextInt();
+                String mname=sc.next();
+                String dir=sc.next();
+                String actor=sc.next();
+                int rating=sc.nextInt();
+                String type=sc.next();
+                String dt=sc.next();
+
+                if(type.endsWith("U"))
+                {
+                    System.out.print(id+"\t");
+                      System.out.print(mname+"\t");
+                      System.out.print(dir+"\t");
+                      System.out.print(actor+"\t");
+                      System.out.print(rating+"\t");
+                      System.out.print(type+"\t");
+                      System.out.print(dt+"\t");
+              }
+               
+                if (rating>=4)
+                {
+                    System.out.println();
+                    System.out.println("rating with 4 star");
+                     System.out.print(id+"\t");
+                      System.out.print(mname+"\t");
+                      System.out.print(dir+"\t");
+                      System.out.print(actor+"\t");
+                      System.out.print(rating+"\t");
+                      System.out.print(type+"\t");
+                       System.out.print(dt+"\t");
+                      System.out.println();
+                      
+                
+                }
+                
+                if(actor.startsWith("khan"))
+                {
+                     System.out.println("khan star");
+                     System.out.print(id+"\t");
+                      System.out.print(mname+"\t");
+                      System.out.print(dir+"\t");
+                      System.out.print(actor+"\t");
+                      System.out.print(rating+"\t");
+                      System.out.print(type+"\t");
+                       System.out.print(dt+"\t");
+                      System.out.println();
+                }
+                
+                String [] str=dt.split("/");
+                if(str[2].matches("2105"))
+                {
+                     System.out.print(id+"\t");
+                      System.out.print(mname+"\t");
+                      System.out.print(dir+"\t");
+                      System.out.print(actor+"\t");
+                      System.out.print(rating+"\t");
+                      System.out.print(type+"\t");
+                       System.out.print(dt+"\t");
+                      System.out.println();
+                }
+                        
+                
+                System.out.println();
+            }
+             
+                
+            }
+      
+            
+    }

@@ -1,0 +1,247 @@
+Qu 5 :-
+Write a program to accept the customer details like :-
+1.  CustomerId        -- String -- 
+2.  CustomerName      -- String -- 
+3.  CustomerGender    -- String -- 
+4.  CustomerAge       -- int -- 
+5.  CustomerAddress   -- String -- 
+6.  CustomerCity      -- String -- 
+7.  CustomerCountry   -- String -- 
+8.  CustomerPin       -- String -- 
+9.  CustomerPhone     -- String -- 
+10. CustomerAreaOfInterest --String--
+11. CustomerDOB       -- Date -- 
+
+Validate the data:-
+1.  CustomerId-must not be more than 4 character and must start with 'C'
+2.  CustomerName -- data must not be blank or null
+3.  CustomerGender -- Should allow only Male and Female    
+4.  CustomerPhone     should allow null value if user is not entring any data
+5. CustomerAreaOfInterest -- user must enter 2 value
+6. CustomerDOB     --should not be more than 8 characters
+
+
+Code for inserting data in file
+:
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaexampls.FileIOExample;
+import java.io.File;
+import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
+/**
+ *
+ * @author Harshali
+ */
+public class Customer5_file {
+    public static void main(String [] arg) throws IOException
+    {
+        //in this example we read that bytedata mesge in that datafile path given 
+        //String datafile ="D:\\harshu\\hpp.txt";
+        
+        String  C_name,C_id,C_AreaofInterest;
+         String C_gen;
+          String C_add;
+          String C_city,C_country,C_DOB;
+         
+        int C_age,C_pin,C_ph;
+        Scanner sc=new Scanner(System.in);
+        File StudentDetails = new File("D:\\harshu\\Customer5_File.txt");
+         PrintWriter pw = new PrintWriter(new FileWriter(StudentDetails, true));
+       
+         //pw.print("S_id"+"\t"+"name"+"\t"+"Age"+"\t"+"city"+"\t"+"country");
+
+          for (int i = 0; i <2; i++) {
+       
+        try {
+            
+            System.out.println("Enter Cust Id in starting C and following threee digit number: ");
+            pw.println();
+            
+            C_id=sc.next();
+             pw.print(C_id+"\t");
+             //System.out.println("Enter product Id in starting S and following threee digit number: ");
+            System.out.println("Enter Customer name: ");
+             C_name=sc.next();
+             if(C_name==null)
+             {
+                 System.out.println("name must not null");
+             }
+             pw.print(C_name+"\t");
+             
+            System.out.println("Enter gender in f and m format: ");
+            C_gen = sc.next();
+            pw.print(C_gen+"\t");
+
+          System.out.println("Enter Age: ");
+             C_age = sc.nextInt();
+             pw.print( C_age+"\t");
+         
+             System.out.println("Enter Address: ");
+             C_add = sc.next();
+             pw.print( C_add+"\t");
+         
+             System.out.println("Enter city: ");
+             C_city= sc.next();
+             pw.print( C_city+"\t");
+             
+             System.out.println("Enter  country: ");
+             C_country= sc.next();
+             pw.print( C_country+"\t");
+             
+             System.out.println("Enter pin: ");
+             C_pin= sc.nextInt();
+             pw.print( C_pin+"\t");
+             
+             System.out.println("Enter phone: ");
+             C_ph= sc.nextInt();
+             pw.print( C_ph+"\t");
+             
+             System.out.println("Enter Area of Intrest two values: ");
+             C_AreaofInterest= sc.next();
+             pw.print( C_AreaofInterest+"\t");
+             
+             System.out.println("Enter DoB: ");
+             C_DOB= sc.next();
+             pw.print( C_DOB+"\t");
+             
+             pw.println();
+                }
+           catch(Exception e)
+           {
+               
+        }
+           System.out.println(); 
+        
+    }
+   
+
+    pw.close();
+    sc.close();
+    
+   
+} 
+}
+
+    
+    
+    Code for querries:
+
+
+package javaexampls.FileIOExample;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+
+public class Cust5_Exans {
+    public static void main(String args[]) throws FileNotFoundException
+    { 
+        CountAge s=new CountAge();
+        boolean t=true;
+       // s.start(); 
+        FileReader fr=new FileReader("D:\\harshu\\Customer5_File.txt");
+        
+        Scanner sc =new Scanner(fr);
+            
+            String the_line=null;
+            String [] arr= new String[100];
+            int count=0;
+            int countf=0;
+            int countm=0;
+            int cph=0;
+            int c1=0,c2=0;
+            String nm="A";
+            while(sc.hasNext())
+            {
+                String Cid=sc.next();
+                String Cname=sc.next();
+                String gen=sc.next();
+                int age=Integer.parseInt(sc.next());
+                String add=sc.next();
+                 String city=sc.next();
+                 String [] ct=city.split("\t");
+                
+                  String country=sc.next();
+                  int pin=sc.nextInt();
+                  String ph=sc.next();
+                  String AoI=sc.next();
+                  String dob=sc.next();
+                 //System.out.println(ct[0]);
+                  
+                 if(city.equals(ct[0]))
+                 {
+                     System.out.print(Cid+"\t");
+                     System.out.print(Cname+"\t");
+                     System.out.print(gen+"\t");
+                     System.out.print(age+"\t");
+                     System.out.print(add+"\t");
+                     System.out.print(city+"\t");
+                     System.out.print(country+"\t");
+                     System.out.print(pin+"\t");
+                     System.out.print(ph+"\t");
+                     System.out.print(dob+"\t");
+                     System.out.println();
+                     
+                 }
+                if (gen.equals("m"))
+                  {
+                      countm++;
+                  }
+                else if(gen.equals("f"))
+                {
+                 countf++;
+                }
+                else 
+                {
+                     System.out.println();
+                }
+                
+                if(AoI.equals("Travling"))
+                {
+                    c1++;
+                }
+                
+                 if(AoI.equals("reading"))
+                {
+                    c2++;
+                }
+                
+                if(age>18)
+                {
+                    count++;
+                }
+                
+                if(ph==null)
+                {
+                   cph++;
+                }
+                
+                
+              // System.out.println(d);
+                
+                
+            }
+            System.out.println("toatl male:"+countm);
+            System.out.println("toatl female:"+countf);
+            System.out.println("toatl customer who like travlling:"+c1);
+            System.out.println("toatl customer who like reading:"+c2);
+            System.out.println( "total number of Studetn whose age greater than 18 is:"+count);
+            System.out.println("total number of people who dont have pph number"+cph);
+             sc.close();
+    }
+    
+    
+    
+}
+    
+    
+    
+    
+
+
